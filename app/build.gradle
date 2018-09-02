@@ -50,7 +50,7 @@ android {
             applicationIdSuffix ".debug"
 //            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE_URL", "\"https://api.github.com\""
+            buildConfigField "String", "API_BASE_URL", "\"https://gateway.marvel.com:443\""
         }
 
         release {
@@ -60,7 +60,7 @@ android {
             zipAlignEnabled true
 //            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE_URL", "\"https://api.github.com\""
+            buildConfigField "String", "API_BASE_URL", "\"https://gateway.marvel.com:443\""
         }
     }
 
@@ -87,6 +87,7 @@ dependencies {
 
     // Dagger
     implementation deps.google.dagger
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     kapt deps.google.compiler
     implementation deps.google.dagger_support
     kapt deps.google.processor

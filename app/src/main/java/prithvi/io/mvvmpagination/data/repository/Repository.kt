@@ -5,5 +5,5 @@ import javax.inject.Singleton
 
 @Singleton
 class Repository @Inject constructor(
-        val github: GithubRepository
+        val github: CharacterRepository
 )
