@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_vertical_half_margin" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dimen_vertical_half_margin"
+        android:layout_marginTop="@dimen/dimen_vertical_half_margin"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/colorGrayish"
+        android:textSize="14sp"
+        tools:text="Loading items..." />
+
+    <Button
+        android:id="@+id/btnRetry"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimen_vertical_half_margin"
+        android:text="@string/retry" />
+
+</LinearLayout>

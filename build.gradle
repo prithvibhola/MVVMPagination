@@ -23,6 +23,7 @@ buildscript {
             'timber'           : '4.6.0',
             'chuck'            : '1.1.0',
             'android_arch'     : '1.1.1',
+            'paging_arch'      : '1.0.1',
             'glide'            : '4.7.1',
             'progress_activity': '2.0.5',
             'sourceCompat'     : JavaVersion.VERSION_1_8,
@@ -79,7 +80,8 @@ buildscript {
                     'viewmodel'      : "android.arch.lifecycle:viewmodel:${versions.android_arch}",
                     'livedata'       : "android.arch.lifecycle:livedata:${versions.android_arch}",
                     'common'         : "android.arch.lifecycle:common-java8:${versions.android_arch}",
-                    'reactivestreams': "android.arch.lifecycle:reactivestreams:${versions.android_arch}"
+                    'reactivestreams': "android.arch.lifecycle:reactivestreams:${versions.android_arch}",
+                    'paging'         : "android.arch.paging:runtime:${versions.paging_arch}"
             ],
             others     : [
                     'chuck'     : "com.readystatesoftware.chuck:library:${versions.chuck}",

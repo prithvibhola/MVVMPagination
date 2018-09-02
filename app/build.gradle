@@ -115,6 +115,7 @@ dependencies {
     implementation deps.androidarch.livedata
     implementation deps.androidarch.common
     implementation deps.androidarch.reactivestreams
+    implementation deps.androidarch.paging
 
     // Others
     implementation deps.square.timber

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVVM Pagination</string>
+    <string name="retry">Retry</string>
 </resources>
