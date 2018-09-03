@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MVVM Pagination</string>
     <string name="retry">Retry</string>
+
+    <string name="marvel_characters">Marvel Characters</string>
+
+    <string name="loading">Loading…</string>
+    <string name="error_loading">Error loading data. Please try again.</string>v
 </resources>
