@@ -10,6 +10,6 @@ import javax.inject.Singleton
 class CharacterRepository @Inject constructor(
         private val api: Api
 ) {
-    fun getMarvelCharacters(orderBy: String, limit: Int, offset: Int, apiKey: String): Flowable<List<Character>> =
+    fun getMarvelCharacters(orderBy: String = "name", limit: Int = 10, offset: Int, apiKey: String = ""): Flowable<List<Character>> =
             api.getMarvelCharacters(orderBy, limit, offset, apiKey).map { it.data.results }.toFlowable()
 }
