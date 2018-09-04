@@ -87,7 +87,6 @@ dependencies {
 
     // Dagger
     implementation deps.google.dagger
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     kapt deps.google.compiler
     implementation deps.google.dagger_support
     kapt deps.google.processor

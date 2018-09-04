@@ -34,7 +34,6 @@ buildscript {
             'espresso'         : '3.0.2'
     ]
 
-
     ext.deps = [
             android    : [
                     'gradle': "com.android.tools.build:gradle:${versions.android_gradle}"
