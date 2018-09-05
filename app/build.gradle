@@ -17,6 +17,10 @@ ext {
 
 android {
     compileSdkVersion 27
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
     defaultConfig {
         applicationId "prithvi.io.mvvmpagination"
         minSdkVersion versions.minSdk
@@ -24,6 +28,8 @@ android {
         versionCode versions.code
         versionName versions.name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resValue "string", "marvel_private_key", properties.getProperty("marvel.private.key", "")
     }
 
 //    signingConfigs {

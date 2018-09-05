@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface Api {
 
-    @GET("/v1/public/characters/")
+    @GET("/v1/public/characters")
     fun getMarvelCharacters(
             @Query("orderBy") orderBy: String,
             @Query("limit") limit: Int,
