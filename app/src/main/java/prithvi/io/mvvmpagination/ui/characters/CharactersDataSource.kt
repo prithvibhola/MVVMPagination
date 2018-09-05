@@ -10,6 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import prithvi.io.mvvmpagination.data.models.Character
 import prithvi.io.mvvmpagination.data.models.Response
+import prithvi.io.mvvmpagination.data.repository.CharacterRepository
 import prithvi.io.mvvmpagination.data.repository.Repository
 import timber.log.Timber
 
@@ -28,15 +29,15 @@ class CharactersDataSource(
         networkState.postValue(Response.loading())
         initialLoad.postValue(Response.loading())
         compositeDisposable.add(
-                repository.character.getMarvelCharacters(offset = page++)
+                repository.character.getMarvelCharacters(offset = page)
                         .subscribeBy(
                                 onNext = {
+                                    page += CharacterRepository.PAGE_LIMIT
                                     networkState.postValue(Response.success(null))
                                     initialLoad.postValue(Response.success(it))
                                     callback.onResult(it)
                                 },
                                 onError = {
-                                    page--
                                     setRetry(Action { loadInitial(params, callback) })
                                     networkState.postValue(Response.error(it))
                                     initialLoad.postValue(Response.error(it))
@@ -48,14 +49,14 @@ class CharactersDataSource(
     override fun loadAfter(params: LoadParams<Long>, callback: LoadCallback<Character>) {
         networkState.postValue(Response(Response.Status.LOADING, null, null))
         compositeDisposable.add(
-                repository.character.getMarvelCharacters(offset = page++)
+                repository.character.getMarvelCharacters(offset = page)
                         .subscribeBy(
                                 onNext = {
+                                    page += CharacterRepository.PAGE_LIMIT
                                     networkState.postValue(Response.success(null))
                                     callback.onResult(it)
                                 },
                                 onError = {
-                                    page--
                                     setRetry(Action { loadAfter(params, callback) })
                                     networkState.postValue(Response.error(it))
                                     Timber.e(it, "Error in getting bonus")

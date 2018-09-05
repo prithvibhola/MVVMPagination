@@ -11,20 +11,19 @@ import io.reactivex.disposables.CompositeDisposable
 import prithvi.io.mvvmpagination.data.models.Character
 import prithvi.io.mvvmpagination.data.models.Response
 import prithvi.io.mvvmpagination.data.repository.Repository
+import prithvi.io.mvvmpagination.ui.base.BaseViewModel
 import javax.inject.Inject
 
 class CharactersViewModel @Inject constructor(
         repository: Repository
-) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
+) : BaseViewModel() {
 
     var characters: LiveData<PagedList<Character>>
     private var sourceFactory: CharactersDataSourceFactory
     private var pageSize = 10
 
     init {
-        sourceFactory = CharactersDataSourceFactory(repository, compositeDisposable)
+        sourceFactory = CharactersDataSourceFactory(repository, getCompositeDisposable())
         characters = LivePagedListBuilder<Long, Character>(sourceFactory,
                 PagedList.Config.Builder()
                         .setPageSize(pageSize)
@@ -38,11 +37,6 @@ class CharactersViewModel @Inject constructor(
     fun refresh() = sourceFactory.charactersDataSource.value!!.invalidate()
     fun getNetworkState(): LiveData<Response<Character>> = Transformations.switchMap<CharactersDataSource, Response<Character>>(sourceFactory.charactersDataSource) { it.networkState }
     fun getRefreshState(): LiveData<Response<List<Character>>> = Transformations.switchMap<CharactersDataSource, Response<List<Character>>>(sourceFactory.charactersDataSource) { it.initialLoad }
-
-    override fun onCleared() {
-        compositeDisposable.dispose()
-        super.onCleared()
-    }
 
     open class CharactersDataSourceFactory(
             private val repository: Repository,

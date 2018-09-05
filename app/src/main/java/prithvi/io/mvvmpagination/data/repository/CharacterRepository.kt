@@ -9,19 +9,18 @@ import prithvi.io.mvvmpagination.utility.extentions.toMD5
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class CharacterRepository @Inject constructor(
         private val api: Api,
         private val context: Context
 ) {
-    fun getMarvelCharacters(orderBy: String = "name", limit: Int = 10, offset: Int, apiKey: String = "55892510f2342c36cb6efafb6cae7aac"): Flowable<List<Character>> =
-            api.getMarvelCharacters(orderBy,
-                    limit,
-                    offset,
-                    System.currentTimeMillis(),
-                    apiKey,
-                    "${System.currentTimeMillis()}${apiKey}${context.resources.getString(R.string.marvel_private_key)}".toMD5())
+    companion object {
+        const val PAGE_LIMIT = 10
+    }
+
+    fun getMarvelCharacters(orderBy: String = "name", offset: Int): Flowable<List<Character>> =
+            api.getMarvelCharacters(orderBy, PAGE_LIMIT, offset, 1, context.resources.getString(R.string.marvel_public_key),
+                    "1${context.resources.getString(R.string.marvel_private_key)}${context.resources.getString(R.string.marvel_public_key)}".toMD5())
                     .map { it.data.results }
                     .toFlowable()
 }

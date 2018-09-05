@@ -21,14 +21,16 @@ data class Character(
         @Json(name = "name") val name: String,
         @Json(name = "description") val description: String,
         @Json(name = "modified") val modified: String,
-        @Json(name = "thumbnail") val thumbnail: Thumbnail,
+        @Json(name = "thumbnail") val _thumbnail: Thumbnail,
         @Json(name = "resourceURI") val resourceURI: String,
         @Json(name = "comics") val comics: Comics,
         @Json(name = "series") val series: Series,
         @Json(name = "stories") val stories: Stories,
         @Json(name = "events") val events: Events,
         @Json(name = "urls") val urls: List<Urls>
-)
+) {
+    val thumbnail = "${_thumbnail.path}.${_thumbnail.extension}"
+}
 
 data class Thumbnail(
         @Json(name = "path") val path: String,
