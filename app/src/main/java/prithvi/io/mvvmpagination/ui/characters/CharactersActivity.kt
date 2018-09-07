@@ -11,6 +11,7 @@ import prithvi.io.mvvmpagination.data.models.Response
 import prithvi.io.mvvmpagination.ui.base.BaseActivity
 import prithvi.io.mvvmpagination.utility.extentions.observe
 import prithvi.io.mvvmpagination.utility.extentions.setScreenTitle
+import prithvi.io.mvvmpagination.utility.extentions.withDelay
 import javax.inject.Inject
 
 class CharacterActivity : BaseActivity() {
@@ -43,6 +44,7 @@ class CharacterActivity : BaseActivity() {
                 Response.Status.LOADING -> activityState.showLoading()
                 Response.Status.SUCCESS -> {
                     it.data ?: return@observe
+                    withDelay(200) { swipeRefresh?.isRefreshing = false }
                     if (it.data.isEmpty())
                         activityState.showEmpty(R.drawable.ic_golf_course_black_24dp,
                                 "Thanos is here!!",
@@ -50,11 +52,19 @@ class CharacterActivity : BaseActivity() {
                     else
                         activityState.showContent()
                 }
-                Response.Status.ERROR -> activityState.showError(R.drawable.ic_golf_course_black_24dp,
-                        "Smash!!",
-                        "Couldn't get Marvel characters. Please try again.",
-                        "Retry") { viewModel.retry() }
+                Response.Status.ERROR -> {
+                    withDelay(200) { swipeRefresh?.isRefreshing = false }
+                    activityState.showError(R.drawable.ic_golf_course_black_24dp,
+                            "Smash!!",
+                            "Couldn't get Marvel characters. Please try again.",
+                            "Retry") { viewModel.retry() }
+                }
             }
+        }
+
+        swipeRefresh.setOnRefreshListener {
+            viewModel.refresh()
+            viewModel.retry()
         }
     }
 }

@@ -9,17 +9,31 @@
     <ImageView
         android:id="@+id/ivThumbnail"
         android:layout_width="100dp"
-        android:layout_height="150dp" />
+        android:layout_height="100dp" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_vertical_margin"
+        android:layout_marginStart="@dimen/dimen_vertical_margin"
         android:fontFamily="@font/roboto_medium"
         android:textSize="16sp"
+        android:textColor="@color/colorGrayishBrown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivThumbnail"
-        tools:text="Thor" />
+        tools:text="Adam Warlock" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_vertical_margin"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/colorGrayish"
+        android:layout_marginTop="@dimen/dimen_vertical_half_margin"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivThumbnail"
+        tools:text="Adam Warlock is an artificially created human who was born in a cocoon at a scientific complex called The Beehive." />
 
 </android.support.constraint.ConstraintLayout>

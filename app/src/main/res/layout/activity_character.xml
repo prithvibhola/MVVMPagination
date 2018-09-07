@@ -23,8 +23,8 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <com.vlonjatg.progressactivity.ProgressConstraintLayout
-        android:id="@+id/activityState"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,10 +32,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ablToolbar">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvCharacters"
+        <com.vlonjatg.progressactivity.ProgressConstraintLayout
+            android:id="@+id/activityState"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.vlonjatg.progressactivity.ProgressConstraintLayout>
+            android:layout_height="match_parent">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvCharacters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.vlonjatg.progressactivity.ProgressConstraintLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    v
 </android.support.constraint.ConstraintLayout>

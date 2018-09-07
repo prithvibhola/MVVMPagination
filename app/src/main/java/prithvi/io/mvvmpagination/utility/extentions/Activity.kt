@@ -1,6 +1,8 @@
 package prithvi.io.mvvmpagination.utility.extentions
 
+import android.app.Activity
 import android.arch.lifecycle.*
+import android.os.Handler
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.ActionBar
 
@@ -19,3 +21,5 @@ fun ActionBar.setScreenTitle(screenTitle: String, enableBack: Boolean = false) {
         title = screenTitle
     }
 }
+
+fun Activity.withDelay(delay: Long = 100L, block: () -> Unit) = Handler().postDelayed(Runnable(block), delay)

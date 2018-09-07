@@ -23,6 +23,7 @@ class CharactersAdapter(context: Context, retryCallback: () -> Unit) : Paginated
         override fun bind(item: Character) {
             itemView.apply {
                 tvName.text = item.name
+                tvDescription.text = item.description
                 Glide.with(context).load(item.thumbnail).into(ivThumbnail)
             }
         }
