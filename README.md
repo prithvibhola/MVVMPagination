@@ -1,8 +1,7 @@
 # Android Kotlin MVVM Pagination example
 > MVVM Pagination example
 
-<img src="/screenshots/Screenshot_1538570935.png" width="300"/>
-<img src="/screenshots/Screenshot_1538570945.png" width="300"/>
+<img src="/screenshots/Screenshot_1538570935.png" width="300"/> <img src="/screenshots/Screenshot_1538570945.png" width="300"/>
 <img src="/screenshots/Screenshot_1538570987.png" width="300"/>
 
 # Project uses:
